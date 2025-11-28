@@ -1,14 +1,14 @@
 API_KEY = ""
-API_URL = "https://openair.iqair.com/api/v1/data"
-HEADERS = {"x-access-token": API_KEY}
+API_URL = ""
+HEADERS = {"x-api-key": API_KEY}
 
-SLEEP_INTERVAL = 3600
+SLEEP_INTERVAL = 300
 DB_PATH = "db/data_tracker.db"
-CSV_PATH = "data"
-TXT_PATH = "/"
 
 FTP_HOST = ""  
 FTP_PORT = 
 FTP_USERNAME = ""
 FTP_PASSWORD = ""
 FTP_HOME_DIR = "/"
+
+TZ_OFFSET=4

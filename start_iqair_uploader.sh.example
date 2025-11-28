@@ -13,4 +13,4 @@ log_directory="/path/to/logs"
 mkdir -p $log_directory
 
 # Run the Python script and redirect output to a log file in the log directory
-python3 upload_to_iqair.py > "$log_directory/iqair_uploader_$timestamp.log" 2>&1
+python3 upload_to_citiesair.py > "$log_directory/citiesair_uploader_$timestamp.log" 2>&1
