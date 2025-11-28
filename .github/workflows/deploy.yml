@@ -1,0 +1,34 @@
+name: Deploy to Raspberry Pi
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout (required but irrelevant for pull)
+        uses: actions/checkout@v4
+
+      - name: Copy updated code
+        run: |
+          mkdir -p /home/admin/fidas_uploader/
+          rsync -av \
+            --exclude 'venv/' \
+            --exclude 'appConfig.py' \
+            --exclude 'db/' \
+            ./ /home/admin/fidas_uploader/
+
+      - name: Ensure virtual environment exists and install deps
+        run: |
+          cd /home/admin/fidas_uploader
+          if [ ! -d "venv" ]; then
+            python3 -m venv venv
+          fi
+          ./venv/bin/pip install --upgrade pip
+          ./venv/bin/pip install -r requirements.txt
+
+      - name: Restart service
+        run: sudo systemctl restart fidas_uploader.service
