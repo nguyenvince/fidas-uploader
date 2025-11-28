@@ -11,8 +11,6 @@ This script:
   as a CSV upload.
 """
 
-from __future__ import annotations
-
 import datetime
 import io
 import logging
